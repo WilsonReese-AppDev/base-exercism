@@ -21,9 +21,3 @@ class WordCount
         # p "````"
     end
 end
-
-# olly: 2
-# in: 1
-# come: 1
-# free: 1
-# ```
