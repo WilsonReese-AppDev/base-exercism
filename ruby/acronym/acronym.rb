@@ -8,10 +8,11 @@ To get started with TDD, see the `README.md` file in your
 
 class Acronym
   def self.abbreviate(a_string)
-    words = a_string.split(" ")
+    words = a_string.split(/\W+/)
     abbrev = ""
     words.each do |a_word|
-      abbrev += a_word[0].upcase
+      abbrev << a_word[0].upcase
     end
+    abbrev
   end
 end
