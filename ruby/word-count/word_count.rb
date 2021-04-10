@@ -6,18 +6,21 @@ To get started with TDD, see the `README.md` file in your
 `ruby/word-count` directory.
 =end
 
-class WordCount
-    def word_count(phrase)
-        words = text.downcase.split(/\W+/)
-        # number_of_words = Hash.new
-        # words.each do |word|
-        #     number_of_words[word] = words.count(word)
-        # end
-        counts = words.tally
-        # p "```text"
-        # number_of_words.each_key do
-        #     number_of_words(key).to_s + ": " + number_of_words[key].to_s
-        # end
-        # p "````"
+class Phrase
+  attr_reader :text
+
+  def initialize(text)
+    @text = text
+  end
+
+  def word_count
+    words = @text.downcase.strip.split(/[^0-9a-z']+/)
+    words.each do |word|
+        if word[0] == "\'" && word[word.length - 1] == "\'"
+            word[0] = ""
+            word[word.length - 1] = ""
+        end
     end
+    count = words.tally
+  end
 end
