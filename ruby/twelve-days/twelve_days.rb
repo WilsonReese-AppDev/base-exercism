@@ -41,13 +41,16 @@ class TwelveDays
                  "eleven Pipers Piping",
                  "twelve Drummers Drumming"]
         daily_gifts = Array.new
+        verses = Array.new
         (1..12).each do |day|
-            verse = ""
             daily_gifts = daily_gifts.prepend(gifts[day - 1])
             if daily_gifts.size > 1
-                daily_gifts[-1] = daily_gifts[-1].prepend("and ")
+                if daily_gifts[-1].include?("and ")
+                else
+                    daily_gifts[-1] = daily_gifts[-1].prepend("and ")
+                end
             end
-            verse = daily_gifts.join(", ")
+            verses[day - 1] = daily_gifts.join(", ")
             # daily_gifts.each do |gift|
             #     if  == daily_gifts.last
             #         verse += ", and #{gift}."
@@ -55,7 +58,6 @@ class TwelveDays
             #         verse += gift + ", "
             #     end
             # end
-            @song = base_song(ordinals[day-1]) + @song + verse
         end
     end
 
