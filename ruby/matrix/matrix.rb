@@ -9,6 +9,7 @@ To get started with TDD, see the `README.md` file in your
 class Matrix 
     def initialize(string)
         @array_of_rows = string.split(/\n/)
+        @array_of_rows = @array_of_rows.map {|row| row.strip }
     end
 
     def rows
@@ -19,7 +20,7 @@ class Matrix
 
     def columns
         matrix = []
-            @array_of_rows.each {|row| matrix << row.split(/\W/).map(&:to_i)}
+        @array_of_rows.each {|row| matrix << row.split(/\W/).map(&:to_i)}
         matrix.transpose
     end
 end
